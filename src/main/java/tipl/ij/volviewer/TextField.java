@@ -1,3 +1,4 @@
+package tipl.ij.volviewer;
 /*
  * Volume Viewer 2.0
  * 27.11.2012
@@ -5,17 +6,15 @@
  * (C) Kai Uwe Barthel
  */
 
-package fiji.plugin.volumeviewer;
-
 import java.awt.Color;
 
 class TextField {
 	private String text = "";
 	private Color color;
 
-	private float xpos;
-	private float ypos;
-	private float z;
+	private double xpos;
+	private double ypos;
+	private double z;
 	private int fontNr;
 
 	public TextField(String text, Color color, int xpos, int ypos, int z) {
@@ -47,11 +46,11 @@ class TextField {
 		this.text = text;
 	}
 
-	public void setXpos(float xpos) {
+	public void setXpos(double xpos) {
 		this.xpos = xpos;
 	}
 
-	public void setZ(float z) {
+	public void setZ(double z) {
 		this.z = z;
 	}
 
@@ -59,7 +58,7 @@ class TextField {
 		return color;
 	}
 
-	public float getZ() {
+	public double getZ() {
 		return z;
 	}
 
@@ -71,7 +70,7 @@ class TextField {
 		this.fontNr = fontNr;
 	}
 
-	public float getXpos() {
+	public double getXpos() {
 		return xpos;
 	}
 
@@ -79,11 +78,11 @@ class TextField {
 		return text;
 	}
 
-	public float getYpos() {
+	public double getYpos() {
 		return ypos;
 	}
 
-	public void setYpos(float ypos) {
+	public void setYpos(double ypos) {
 		this.ypos = ypos;
 	}
 }

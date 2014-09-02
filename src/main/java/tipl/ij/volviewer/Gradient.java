@@ -1,11 +1,11 @@
+package tipl.ij.volviewer;
+
 /*
  * Volume Viewer 2.0
  * 27.11.2012
  * 
  * (C) Kai Uwe Barthel
  */
-
-package fiji.plugin.volumeviewer;
 
 import java.awt.Color;
 import java.awt.Dimension;
