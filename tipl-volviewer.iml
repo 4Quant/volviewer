@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="FacetManager">
+    <facet type="scala" name="Scala">
+      <configuration>
+        <option name="compilerLibraryLevel" value="Project" />
+        <option name="compilerLibraryName" value="Maven: org.scala-lang:scala-compiler-bundle:2.10.3" />
+        <option name="compilerOptions" value="-feature -language:postfixOps" />
+        <option name="deprecationWarnings" value="true" />
+        <option name="uncheckedWarnings" value="true" />
+        <option name="vmOptions" value="-Xms1G -Xmx2G -XX:PermSize=256m -XX:MaxPermSize=1024m" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -14,11 +26,11 @@
     <orderEntry type="module" module-name="tipl-core" />
     <orderEntry type="library" name="Maven: junit:junit-dep:4.10" level="project" />
     <orderEntry type="library" name="Maven: javax.media:jai-core:1.1.3" level="project" />
-    <orderEntry type="library" name="Maven: io.scif:scifio-jai-imageio:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.scif:scifio-jai-imageio:1.1.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.sun.media:jai-codec:1.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.9-RC2" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:15.0" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.16.1-GA" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.2-GA" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
@@ -87,7 +99,7 @@
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.0.5.3" level="project" />
     <orderEntry type="library" name="Maven: net.jpountz.lz4:lz4:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:chill_2.10:0.3.6" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:chill-java:0.3.6" level="project" />
     <orderEntry type="library" name="Maven: com.esotericsoftware.kryo:kryo:2.21" level="project" />
     <orderEntry type="library" name="Maven: com.esotericsoftware.reflectasm:reflectasm:shaded:1.07" level="project" />
@@ -124,7 +136,7 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.spark-project:pyrolite:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.py4j:py4j:0.8.2.1" level="project" />
-    <orderEntry type="library" name="Maven: net.imagej:ij:1.49d" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:ij:1.49h" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.4.2">
         <CLASSES>
