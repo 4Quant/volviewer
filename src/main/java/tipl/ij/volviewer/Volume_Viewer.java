@@ -10,16 +10,17 @@ package tipl.ij.volviewer;
 
 import ij.IJ;
 import ij.ImageJ;
-//import ij.ImageJ;
 import ij.ImagePlus;
 import ij.Prefs;
 import ij.macro.Interpreter;
 import ij.plugin.PlugIn;
+import tipl.formats.TImg;
+import tipl.formats.TImgRO;
+import tipl.ij.TImgToImagePlus;
+import tipl.util.*;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
-//import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
@@ -30,27 +31,15 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-import javax.swing.JFrame;
-
-import tipl.formats.TImg;
-import tipl.formats.TImgRO;
-import tipl.ij.TImgToImagePlus;
-import tipl.util.ArgumentParser;
-import tipl.util.D3float;
-import tipl.util.ITIPLPlugin;
-import tipl.util.ITIPLPluginIn;
-import tipl.util.SGEJob;
-import tipl.util.TIPLGlobal;
-import tipl.util.TIPLPluginManager;
-import tipl.util.TImgTools;
-import tipl.util.TypedPath;
+//import ij.ImageJ;
+//import java.awt.Toolkit;
 
 public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	@TIPLPluginManager.PluginInfo(pluginType = "VolumeViewer",
 			desc="Full memory volume viewer",
 			sliceBased=false,
 			maximumSize=1024*1024*1024)
-	final public static TIPLPluginManager.TIPLPluginFactory myFactory = new TIPLPluginManager.TIPLPluginFactory() {
+    final public static class clSparkFactory implements TIPLPluginManager.TIPLPluginFactory {
 		@Override
 		public ITIPLPlugin get() {
 			return new Volume_Viewer();
@@ -334,8 +323,7 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 
 	/**
 	 * standard access from tipl based tools
-	 * 
-	 * @param args
+	 *
 	 * @param inTImg
 	 *            TImgRO to be rendered
 	 */
@@ -382,8 +370,6 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	 * 
 	 * @param args
 	 *            commands for plugin
-	 * @param inImp
-	 *            the image to use
 	 */
 	public void run(String args) {
 		// make sure all of the data is loaded
