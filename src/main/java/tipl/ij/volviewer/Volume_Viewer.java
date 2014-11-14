@@ -118,7 +118,12 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	@Override
 	public boolean execute(String actionToExecute)
 			throws IllegalArgumentException {
-		// TODO Implement Method
+        if (actionToExecute.equalsIgnoreCase("waitForClose")) {
+            final boolean outVal = execute();
+            waitForClose();
+            return outVal;
+        }
+		// TODO Implement other options
 		throw new IllegalArgumentException(this + " is not implemented yet!");
 	}
 
