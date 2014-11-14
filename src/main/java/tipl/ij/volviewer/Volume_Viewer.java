@@ -6,6 +6,8 @@ package tipl.ij.volviewer;
  * 01.12.2012
  * 
  * (C) Kai Uwe Barthel
+ *
+ * Modified by Kevin Mader to work with TIPL tools and Apache Spark
  */
 
 import ij.IJ;
@@ -73,9 +75,11 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 
 	private boolean batch = false;
 	protected static ImageJ ijcore = null;
+    protected static boolean createImageJ = true;
 
 	public Volume_Viewer() {
-		ijcore=TIPLGlobal.getIJInstance(); // open the ImageJ window to see images and results
+		if (createImageJ) ijcore=TIPLGlobal.getIJInstance(); // open the ImageJ window to see
+		// images and results
 		// This should be created at the very beginning
 		control = new Control(this);
 		control.xloc = 100;
@@ -84,7 +88,8 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	}
 
 	protected Volume_Viewer(Volume invol,ImagePlus inImp, TImgRO inInternalImage) {
-		ijcore=TIPLGlobal.getIJInstance(); // open the ImageJ window to see images and results
+		if (createImageJ) ijcore=TIPLGlobal.getIJInstance(); // open the ImageJ window to see
+		// images and results
 
 		// This should be created at the very beginning
 		control = new Control(this);
@@ -277,8 +282,9 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	 */
 	@Override
 	public String toString() {
-		return this.getClass().getName() + " -input=" + internalImage.getPath()
-				+ " " + setParameter(TIPLGlobal.activeParser(new String[]{}),"").toString();
+		return this.getClass().getName() + " -input=" + ((internalImage==null) ? "(Not " +
+                "Loaded)" : internalImage.getPath())+
+				" " + setParameter(TIPLGlobal.activeParser(new String[]{}),"").toString();
 	}
 
 	protected TImgRO internalImage = null;
