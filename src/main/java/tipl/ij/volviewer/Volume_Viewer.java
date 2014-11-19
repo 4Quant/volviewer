@@ -113,7 +113,7 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 
 	@Override
 	public boolean execute() {
-
+        load_image();
 		batch = true;
 		assert (internalImage != null);
 		run("");
@@ -306,8 +306,7 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 	    }
 	    if (Double.isNaN(control.zAspect))
 	        control.zAspect=1;
-	    
-		load_image();
+
 	}
 
 	public static void main(String args[]) {
@@ -327,8 +326,7 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 		else {
 			TImg inData = TImgTools.ReadTImg(inpath);
 			vv.LoadImages(new TImgRO[] { inData });
-			vv.run("");
-			vv.waitForClose();
+			vv.execute("waitForClose");
 		}
 	}
 
