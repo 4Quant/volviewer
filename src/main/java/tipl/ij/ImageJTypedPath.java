@@ -3,8 +3,13 @@ package tipl.ij;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
+import ij.gui.ImageWindow;
+import tipl.util.ITIPLFileSystem;
+import tipl.util.TIPLStorageManager;
 import tipl.util.TypedPath;
+import tipl.util.VirtualTypedPath;
 
+import java.awt.*;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -13,7 +18,57 @@ import java.util.List;
 /**
  * Created by mader on 12/4/14.
  */
-public class ImageJTypedPath extends TypedPath.SimpleTypedPath {
+public class ImageJTypedPath extends TypedPath.NonPosixTypedPath {
+
+    @ITIPLFileSystem.FileSystemInfo(name="ImageJ Path", desc="a path stored in imagej windows")
+    static public class IJP extends ITIPLFileSystem.WebPrefixFileSystem {
+
+        public IJP() {
+            super(false, "imagej");
+        }
+        @Override
+        public boolean isValidPath(final String currentString) {
+            if(super.isValidPath(currentString)) {
+                String imagePath = currentString.split("://")[1];
+                try {
+                    ImagePlus ip = WindowManager.getImage(imagePath);
+                    return true;
+                } catch (Exception e) {
+                    System.out.println("ImageJ Window:"+imagePath+" not found");
+                }
+                try {
+                    ImagePlus ip = WindowManager.getImage(Integer.parseInt(imagePath));
+                    return true;
+                } catch (Exception e) {
+                    System.out.println("ImageJ Window:"+imagePath+" not an integer");
+                }
+                return false;
+            } else {
+                return false;
+            }
+        }
+
+
+        @Override
+        protected TypedPath openPath(String prefix, String contents, String originalString) {
+            try {
+                ImagePlus ip = WindowManager.getImage(contents);
+                return new ImageJTypedPath(ip);
+            } catch (Exception e) {
+                System.out.println("ImageJ Window:"+contents+" not found");
+            }
+            try {
+                ImagePlus ip = WindowManager.getImage(Integer.parseInt(contents));
+                return new ImageJTypedPath(ip);
+            } catch (Exception e) {
+                System.out.println("ImageJ Window:"+contents+" not an integer");
+            }
+            throw new IllegalArgumentException("ImageJ path:"+originalString+" could not be " +
+                    "opened");
+
+        }
+    }
+
     protected ImagePlus ip;
 
     public ImageJTypedPath(final ImagePlus ip) {
