@@ -177,7 +177,7 @@ public final class Volume_Viewer implements PlugIn, ITIPLPluginIn {
 		return join(a, ", ");
 	}
 
-	protected TypedPath snapshotPath = new TypedPath("");
+	protected TypedPath snapshotPath = TIPLStorageManager.openPath("");
 	protected boolean customRange = false;
 	protected String animatedVariable = "";
 	protected double animatedStart = 0, animatedEnd = 1;
