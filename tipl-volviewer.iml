@@ -114,7 +114,7 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.spark-project:pyrolite:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.py4j:py4j:0.8.2.1" level="project" />
-    <orderEntry type="library" name="Maven: net.imagej:ij:1.49m" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:ij:1.49j" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.4.2">
         <CLASSES>
