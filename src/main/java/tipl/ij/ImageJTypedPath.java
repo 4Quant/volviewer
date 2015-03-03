@@ -119,7 +119,7 @@ public class ImageJTypedPath extends TypedPath.NonPosixTypedPath {
             }
 
             @Override
-            public OutputStream getOutputStream() {
+            public OutputStream getOutputStream(boolean append) {
                 return null;
             }
         };
